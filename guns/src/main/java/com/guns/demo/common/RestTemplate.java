@@ -1,6 +1,8 @@
 package com.guns.demo.common;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.support.TransactionTemplate;
 
 /**
  * 业务模版
@@ -9,8 +11,9 @@ import org.springframework.stereotype.Component;
 public class RestTemplate {
 
 
-    public AjaxResult execute(Callback callback){
+   
 
+    public AjaxResult execute(Callback callback){
         Object date=null;
         try{
             date=callback.doExecute();
@@ -21,6 +24,10 @@ public class RestTemplate {
 
         return AjaxResult.ok(date);
     }
+
+
+
+
 
 
 

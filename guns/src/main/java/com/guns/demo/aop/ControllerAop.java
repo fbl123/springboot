@@ -4,10 +4,14 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class ControllerAop {
+
+    private Logger logger=LoggerFactory.getLogger(ControllerAop.class);
 
 
     @Pointcut(value = "execution(public * com.guns.demo.controller..*.*(..))")
@@ -16,17 +20,18 @@ public class ControllerAop {
 
     @Around("poincut()")
     public void around(ProceedingJoinPoint point){
-        System.out.println(point);
-        System.out.println("前");
         try {
+            logger.info("前置通知");
             point.proceed();
-            System.out.println("后");
+            logger.info("后置通知");
+
         } catch (Throwable throwable) {
             throwable.printStackTrace();
-            System.out.println("异常");
+            logger.info("异常通知");
 
         }
-        System.out.println("---------end");
+        logger.info("---------end");
+
 
     }
 
