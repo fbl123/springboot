@@ -2,6 +2,9 @@ package com.guns.demo.common;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * 业务模版
+ */
 @Component
 public class RestTemplate {
 

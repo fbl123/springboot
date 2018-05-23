@@ -17,7 +17,6 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/user")
 public class UserController {
 
-
     @Autowired
     SysUserMapper sysUserMapper;
     @Autowired
@@ -59,6 +58,9 @@ public class UserController {
         });
 
     }
+
+
+
 
 
 }
