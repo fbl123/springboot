@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -53,11 +54,11 @@ public class UserController {
 
     @GetMapping("/upload")
     public String up(){
-        return "hello";
+        return "upload";
     }
 
     @PostMapping("/upload")
-    public void upload(@RequestParam("file") MultipartFile file){
+    public String upload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes){
         try {
             file.getOriginalFilename(); //文件名称
             InputStream inputStream = file.getInputStream();//输入流
@@ -66,6 +67,8 @@ public class UserController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        redirectAttributes.addFlashAttribute("message","上传成功");
+        return "redirect:/user/greeting";
     }
     /**
      * 注册

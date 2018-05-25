@@ -18,13 +18,13 @@ public class ControllerAop {
     public void poincut(){}
 
 
-//    @Around("poincut()")
-    public void around(ProceedingJoinPoint point){
+    @Around("poincut()")
+    public Object around(ProceedingJoinPoint point){
+        Object result=null;
         try {
             logger.info("前置通知");
-            point.proceed();
+             result = point.proceed();
             logger.info("后置通知");
-
         } catch (Throwable throwable) {
             throwable.printStackTrace();
             logger.info("异常通知");
@@ -32,7 +32,7 @@ public class ControllerAop {
         }
         logger.info("---------end");
 
-
+            return result;
     }
 
 
