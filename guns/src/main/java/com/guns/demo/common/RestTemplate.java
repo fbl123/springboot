@@ -13,7 +13,7 @@ public class RestTemplate {
 
    
 
-    public AjaxResult execute(Callback callback){
+    public static AjaxResult execute(Callback callback){
         Object date=null;
         try{
             date=callback.doExecute();
