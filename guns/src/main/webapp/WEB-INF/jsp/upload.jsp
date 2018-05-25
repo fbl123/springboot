@@ -28,15 +28,11 @@
 <script>
 
     (function(){
-
             var btn = document.getElementById("btn");
             btn.onclick=function(){
                 document.getElementsByTagName("form")[0].submit();
 
             }
-
-
-
 
 
 
