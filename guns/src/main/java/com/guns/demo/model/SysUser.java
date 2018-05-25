@@ -1,10 +1,6 @@
 package com.guns.demo.model;
 
 
-<<<<<<< HEAD
-=======
-import sun.jvm.hotspot.gc_interface.G1YCType;
->>>>>>> 0c60abd094fcbecea525f895823ae668c8155512
 
 import javax.persistence.*;
 import java.io.Serializable;
