@@ -31,15 +31,16 @@ public class UserController {
     }
 
 
-//    @PostMapping("/login")
-    @GetMapping("/login")
+
+
+    @PostMapping("/login")
+//    @GetMapping("/login")
     public AjaxResult login(String account,String password,HttpSession session) {
         return restTemplate.execute(() -> {
             SysUser user = sysUserMapper.findByAccount(account);
             if(user!=null&&user.getPassword().equals(password)){ //登录成功
                 session.setAttribute("user",user);
             }else{
-                System.out.println("账号或密码错误");
                 throw new RuntimeException("账号或密码错误");
             }
             return "1212";

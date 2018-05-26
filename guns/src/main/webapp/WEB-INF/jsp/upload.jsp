@@ -1,11 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: mac
-  Date: 2018/5/25
-  Time: 上午10:13
-  To change this template use File | Settings | File Templates.
---%>
-<
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html>
@@ -18,28 +10,22 @@
 </head>
 
 
-    <form action="/user/upload" method="post" enctype="multipart/form-data">
-            <input type="file" name="file">
-        <br>
+<form action="/user/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <br>
 
-        <button type="button" id="btn">上传</button>
+    <button type="button" id="btn">上传</button>
 
-    </form>
+</form>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<%--<script src="https://cdn.bootcss.com/jquery/3.2.0/core.js"></script>--%>
 <script>
+    ($(function () {
+        $("#btn").click(function(){
+            var type=$("form")[0].submit();
 
-    (function(){
-            var btn = document.getElementById("btn");
-            btn.onclick=function(){
-                document.getElementsByTagName("form")[0].submit();
-
-            }
-
-
-
-    })();
-
-
-
+        })
+    }))
 
 
 </script>

@@ -70,14 +70,11 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-<<<<<<< HEAD
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-=======
->>>>>>> 0c60abd094fcbecea525f895823ae668c8155512
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
@@ -103,12 +100,9 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
-<<<<<<< HEAD
-=======
 
 
 
->>>>>>> 0c60abd094fcbecea525f895823ae668c8155512
 
 
         <dependency>
@@ -129,18 +123,6 @@
             <scope>test</scope>
         </dependency>
 
-
-        <!--<dependency>-->
-<<<<<<< HEAD
-        <!--<groupId>org.apache.httpcomponents</groupId>-->
-        <!--<artifactId>httpclient</artifactId>-->
-        <!--<version>4.5.3</version>-->
-=======
-            <!--<groupId>org.apache.httpcomponents</groupId>-->
-            <!--<artifactId>httpclient</artifactId>-->
-            <!--<version>4.5.3</version>-->
->>>>>>> 0c60abd094fcbecea525f895823ae668c8155512
-        <!--</dependency>-->
 
 
     </dependencies>

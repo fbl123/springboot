@@ -12,6 +12,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -36,5 +37,8 @@ public class DemoApplicationTests {
         redisTemplate.opsForValue().set("name","jick");
         System.out.println(redisTemplate.opsForValue().get("name"));
     }
+
+
+
 
 }
