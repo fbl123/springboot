@@ -4,6 +4,8 @@ import com.guns.demo.model.SysUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface SysUserMapper {
 
     int deleteByPrimaryKey(Integer id);
@@ -15,6 +17,7 @@ public interface SysUserMapper {
     int insertSelective(SysUser record);
 
 
+
     SysUser selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(SysUser record);
@@ -23,4 +26,7 @@ public interface SysUserMapper {
     int updateByPrimaryKey(SysUser record);
 
     SysUser findByAccount(@Param("account") String account);
+
+    List<SysUser> findAll();
+
 }

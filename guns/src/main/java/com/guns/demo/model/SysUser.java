@@ -373,4 +373,25 @@ public class SysUser implements Serializable {
     public void setVersion(Integer version) {
         this.version = version;
     }
+
+    @Override
+    public String toString() {
+        return "SysUser{" +
+                "id=" + id +
+                ", avatar='" + avatar + '\'' +
+                ", account='" + account + '\'' +
+                ", password='" + password + '\'' +
+                ", salt='" + salt + '\'' +
+                ", name='" + name + '\'' +
+                ", birthday=" + birthday +
+                ", sex=" + sex +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", roleid='" + roleid + '\'' +
+                ", deptid=" + deptid +
+                ", status=" + status +
+                ", createtime=" + createtime +
+                ", version=" + version +
+                '}';
+    }
 }
