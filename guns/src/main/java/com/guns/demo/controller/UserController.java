@@ -2,6 +2,7 @@ package com.guns.demo.controller;
 
 import com.guns.demo.common.AjaxResult;
 import com.guns.demo.common.RestTemplate;
+import com.guns.demo.jpa.UserRepository;
 import com.guns.demo.mapper.SysUserMapper;
 import com.guns.demo.model.SysUser;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -22,6 +23,8 @@ public class UserController {
 
     @Autowired
     SysUserMapper sysUserMapper;
+    @Autowired
+    UserRepository userRepository;
     @Autowired
     RestTemplate restTemplate;
     @GetMapping("")
@@ -89,6 +92,18 @@ public class UserController {
             return null;
         });
 
+    }
+    @PostMapping("/edit/{id:\\d++}")
+    public String edit(@PathVariable("id") Integer id,SysUser sysUser){
+        SysUser user=userRepository.getOne(id);
+        if(user!=null){
+            sysUser.setId(id);
+            sysUserMapper.updateByPrimaryKeySelective(user);
+
+        }
+
+
+        return "";
     }
 
 
