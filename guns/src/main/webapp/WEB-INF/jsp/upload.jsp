@@ -23,8 +23,14 @@
     ($(function () {
         $("#btn").click(function(){
             var type=$("form")[0].submit();
+        });
 
-        })
+
+
+
+
+
+
     }))
 
 

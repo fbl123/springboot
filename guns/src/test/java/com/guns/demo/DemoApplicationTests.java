@@ -8,6 +8,7 @@ import com.guns.demo.model.SysUser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -29,6 +30,8 @@ public class DemoApplicationTests {
     SysUserMapper sysUserMapper;
     @Autowired
     private RedisTemplate redisTemplate;
+    @Value("${name}")
+    String value;
 
     @Test
     public void contextLoads() {
@@ -66,5 +69,8 @@ public class DemoApplicationTests {
 
     }
 
-
+    @Test
+    public void value(){
+        System.out.println(value);
+    }
 }
