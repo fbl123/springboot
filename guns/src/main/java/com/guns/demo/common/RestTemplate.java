@@ -27,10 +27,6 @@ public class RestTemplate {
 
 
 
-
-
-
-
     /**
      * 执行回调
      *

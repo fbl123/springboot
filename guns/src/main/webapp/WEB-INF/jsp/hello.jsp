@@ -15,7 +15,7 @@
     <c:if test="${empty message}">
         hhhh
     </c:if>
-    <c:if test="${empty meaage}">
+    <c:if test="${not empty meaage}">
         你好
     </c:if>
 
