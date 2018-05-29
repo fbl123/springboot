@@ -1,12 +1,11 @@
 package com.guns.demo.mapper;
 
 import com.guns.demo.model.SysUser;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
-public interface SysUserMapper {
+public interface SysUserMapper  {
 
     int deleteByPrimaryKey(Integer id);
 
@@ -28,5 +27,11 @@ public interface SysUserMapper {
     SysUser findByAccount(@Param("account") String account);
 
     List<SysUser> findAll();
+
+    @Select("select name from sys_user")
+    @Results({
+            @Result(property = "name",column = "name")
+    })
+    List<String> findName();
 
 }

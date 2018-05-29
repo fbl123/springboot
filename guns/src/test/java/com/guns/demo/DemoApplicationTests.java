@@ -96,4 +96,13 @@ public class DemoApplicationTests {
             System.out.println(dept);
         }
     }
+
+
+    @Test
+    public void names(){
+        List<String> names=sysUserMapper.findName();
+        for(String name:names){
+            System.out.println(name);
+        }
+    }
 }
