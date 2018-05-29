@@ -15,6 +15,5 @@ public interface UserRepository extends JpaRepository<SysUser,Integer> {
 
      @Override
      Optional<SysUser> findById(Integer integer);
-     public static void main(String[] args) {
-     }
+
 }

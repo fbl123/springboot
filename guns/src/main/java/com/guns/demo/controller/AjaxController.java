@@ -47,14 +47,14 @@ public class AjaxController {
 
     /**
      * 获取所有部门
+     *
      * @return
      */
     @GetMapping
-    public AjaxResult depts(){
-
-        return RestTemplate.execute(() ->{
-          return deptRepository.findAll();
-        } );
+    public AjaxResult depts() {
+        return RestTemplate.execute(() -> {
+            return deptRepository.findAll();
+        });
     }
 
 
