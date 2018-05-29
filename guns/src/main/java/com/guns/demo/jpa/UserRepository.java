@@ -13,6 +13,8 @@ public interface UserRepository extends JpaRepository<SysUser,Integer> {
 
      List<SysUser> findAll();
 
+
+
      @Override
      Optional<SysUser> findById(Integer integer);
 
