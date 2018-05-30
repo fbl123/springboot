@@ -118,15 +118,15 @@ public class UserController {
         return "";
     }
 
-
     /**
      * 删除用户
+     *
      * @param id
      * @return
      */
     @PostMapping("/del/{id:\\d++}")
-    public String del(@PathVariable("id") Integer id){
+    public String del(@PathVariable("id") Integer id) {
         userRepository.existsById(id);
-       return "";
+        return "";
     }
 }

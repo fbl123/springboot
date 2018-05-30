@@ -12,7 +12,6 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
 @SpringBootApplication
 @MapperScan("com.guns.demo.mapper")
-
 public class DemoApplication extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
