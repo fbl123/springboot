@@ -1,0 +1,23 @@
+扩展Spring MVC的配置
+        使用WebMvcConfigurer这个bean
+使用@EnableWebMvc注解时说明不需要Spring Boot提供的Spring MVC配置一切配置由自己完成
+
+Spring Boot 注测Servlet三大组件
+           分别注入ServletRegistrationBean
+                  FilterRegistrationBean
+                  ServletListenerRegistrationBean
+                  ...即可
+
+
+@ConfigurationProperties与@Value的区别
+        @ConfigurationProperties可以将前缀一样的配置封装到一个对象中去 不支持Sprint El 表达式
+        支持松散绑定 如last_name 可以绑定到lastName上 可以进行JSR330校验 可以封装复杂类型
+        @Value只能一个一个将值注入 支持Spring EL表达式
+如果需要将以系列配置注入到一个Bean中使用@ConfigurationProperties
+
+
+
+视图
+        默认路径在templates/*.html
+
+        spring boot 默认使用Thymeleaf
