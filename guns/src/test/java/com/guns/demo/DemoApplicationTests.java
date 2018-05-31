@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.guns.demo.jpa.DeptRepository;
 import com.guns.demo.jpa.UserRepository;
 import com.guns.demo.mapper.SysUserMapper;
+import com.guns.demo.common.User;
 import com.guns.demo.model.SysDept;
 import com.guns.demo.model.SysUser;
 import org.junit.Test;
@@ -12,23 +13,18 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.util.DigestUtils;
-import sun.jvm.hotspot.debugger.Page;
-import sun.security.provider.MD5;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DemoApplicationTests {
 
-
+    @Autowired
+    User user;
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -37,11 +33,13 @@ public class DemoApplicationTests {
     private RedisTemplate redisTemplate;
     @Autowired
     private DeptRepository deptRepository;
-    @Value("#{'${name}'.substring(2)}")
-    private String value;
+    @Value("#{'${names}'.split('-')}")
+    private List<String> names;
 
     @Test
     public void contextLoads() {
+
+
         List<SysUser> userList = userRepository.findAll();
         for (SysUser user : userList) {
             System.out.println(user.getAccount());
@@ -77,7 +75,8 @@ public class DemoApplicationTests {
 
     @Test
     public void value() {
-        System.out.println(value);
+        System.out.println(user);
+        System.out.println(names);
     }
 
     public static void main(String[] args) {
@@ -99,13 +98,12 @@ public class DemoApplicationTests {
 
 
     @Test
-    public void names(){
-        List<String> names=sysUserMapper.findName();
-        for(String name:names){
+    public void names() {
+        List<String> names = sysUserMapper.findName();
+        for (String name : names) {
             System.out.println(name);
         }
     }
-
 
 
 }
