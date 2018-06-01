@@ -16,19 +16,14 @@ public class Producer {
     @Autowired
     private JmsTemplate jmsTemplate;
 
-    public void send(Destination destination, MessageCreator  message) throws JMSException {
-//        MessageCreator message=new MessageCreator() {
-//            @Override
-//            public Message createMessage(Session session) throws JMSException {
-//                return session.createTextMessage(text);
-//            }
-//        };
+
+    public void send(Destination destination, MessageCreator message) throws JMSException {
         jmsTemplate.send(destination, message);
     }
 
 
-    public void send(Destination destination, String  message) throws JMSException {
-        MessageCreator messageCreator=new MessageCreator() {
+    public void send(Destination destination, String message) throws JMSException {
+        MessageCreator messageCreator = new MessageCreator() {
             @Override
             public Message createMessage(Session session) throws JMSException {
                 return session.createTextMessage(message);

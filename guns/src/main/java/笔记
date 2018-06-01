@@ -61,8 +61,44 @@ Mybatis
               配置文件的位子（也可以全在spring中配置）
               mybatis.config-location=classpath:mybatis-config.xml
 
-Docker
-        简介
+activemq
+        添加依赖
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-activemq</artifactId>
+                </dependency>
+                <dependency>（可选当spring.activemq.pool.enabled=true时需要添加此依赖）
+                    <groupId>org.apache.activemq</groupId>
+                    <artifactId>activemq-pool</artifactId>
+                    <!-- <version>5.7.0</version> -->
+                </dependency>
+         配置
+         spring.activemq.broker-url=tcp://localhost:61616
+         spring.activemq.user=admin
+         spring.activemq.password=admin
+         spring.activemq.pool.enabled=false
+
+       消息提供者
+       public void send(Destination destination, String  message) throws JMSException {
+               MessageCreator messageCreator=new MessageCreator() {
+                   @Override
+                   public Message createMessage(Session session) throws JMSException {
+                       return session.createTextMessage(message);
+                   }
+               };
+               jmsTemplate.send(destination, messageCreator);
+           }
+        消费者
+        监听destination要和提供的destination一致
+        @JmsListener(destination = "mq")
+            public void receiveQueue(String text){
+        //        if("消息2".equals(text)){
+        //            throw new RuntimeException();
+        //        }
+                System.out.println(text);
+
+            }
+
 
 
 
