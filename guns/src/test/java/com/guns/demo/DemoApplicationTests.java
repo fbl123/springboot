@@ -8,23 +8,34 @@ import com.guns.demo.mapper.SysUserMapper;
 import com.guns.demo.common.User;
 import com.guns.demo.model.SysDept;
 import com.guns.demo.model.SysUser;
+import com.guns.demo.mq.Producer;
+import org.apache.activemq.command.ActiveMQQueue;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.jms.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DemoApplicationTests {
 
     @Autowired
-    User user;
+    private User user;
+    @Autowired
+    private Producer producer;
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -36,15 +47,17 @@ public class DemoApplicationTests {
     @Value("#{'${names}'.split('-')}")
     private List<String> names;
 
+
     @Test
     public void contextLoads() {
-
-
-        List<SysUser> userList = userRepository.findAll();
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
+        Pageable pageable = new PageRequest(0, 2, sort);
+//        List<SysUser> userList = userRepository,findAll();
+        Page<SysUser> page = userRepository.findAll(pageable);
+        List<SysUser> userList = page.getContent();
         for (SysUser user : userList) {
             System.out.println(user.getAccount());
         }
-
     }
 
     @Test
@@ -54,7 +67,6 @@ public class DemoApplicationTests {
         sysUser.setPassword("000000");
         userRepository.save(sysUser);
     }
-
 
     @Test
     public void redisTest() {
@@ -96,7 +108,6 @@ public class DemoApplicationTests {
         }
     }
 
-
     @Test
     public void names() {
         List<String> names = sysUserMapper.findName();
@@ -105,5 +116,25 @@ public class DemoApplicationTests {
         }
     }
 
+    @Test
+    public void map() {
 
+        Map<String, String> map = user.getMap();
+        for (String key : map.keySet()) {
+            System.out.println(key + "----->" + map.get(key));
+        }
+
+
+    }
+
+    @Test
+    public void mq() throws JMSException {
+        int i = 10;
+        Destination destination = new ActiveMQQueue("mq");
+        while (i > 0) {
+            producer.send(destination, "消息" + i);
+            i--;
+        }
+
+    }
 }
