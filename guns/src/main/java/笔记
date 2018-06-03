@@ -98,6 +98,15 @@ activemq
                 System.out.println(text);
 
             }
+redis
+   添加依赖
+            <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-starter-data-redis</artifactId>
+           </dependency>
+         修改配置
+         （默认连接本地 6379）
+         直接注入RedisTemplate 即可
 
 
 

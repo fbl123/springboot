@@ -9,6 +9,7 @@ public class Test {
     public static final String URL = "tcp://localhost:61616";
     // 目标，在ActiveMQ管理员控制台创建 http://localhost:8161/admin/queues.jsp
     public static final String DESTINATION = "mq";
+   
 
     public static void main(String[] args) {
 
@@ -17,7 +18,6 @@ public class Test {
                 ActiveMQConnectionFactory.DEFAULT_PASSWORD, URL);
 
         Connection connection = null;
-
         try {
             connection = connectionFactory.createConnection();
             connection.start();
