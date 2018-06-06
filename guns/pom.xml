@@ -101,6 +101,25 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
+
+        <!--&lt;!&ndash;shiro&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.shiro</groupId>-->
+            <!--<artifactId>shiro-spring-boot-web-starter</artifactId>-->
+            <!--<version>1.4.0</version>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash;shiro+thymeleaf&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>com.github.theborakompanioni</groupId>-->
+            <!--<artifactId>thymeleaf-extras-shiro</artifactId>-->
+            <!--<version>2.0.0</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-security</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-activemq</artifactId>

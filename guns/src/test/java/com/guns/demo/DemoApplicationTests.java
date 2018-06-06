@@ -132,7 +132,7 @@ public class DemoApplicationTests {
         int i = 10;
         Destination destination = new ActiveMQQueue("mq");
         while (i > 0) {
-            producer.send(destination, "消息" + i);
+            producer.send("消息" + i);
             i--;
         }
 

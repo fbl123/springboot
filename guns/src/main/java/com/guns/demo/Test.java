@@ -65,6 +65,7 @@ public class Test {
                 break;
 
             }
+
             //获取消息内容
             String text = message.getText();
             System.out.println(text);

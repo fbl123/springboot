@@ -109,6 +109,20 @@ redis
          直接注入RedisTemplate 即可
 
 
+Shiro
+        创建自己的Realm类继承AuthorizingRealm类
+        在配置中注入org.apache.shiro.web.mgt.DefaultWebSecurityManager 依赖注入realm
+springboot
 
 
+    重要的几个监听器
+    配置在META-INF/spring.factorles中
+    ApplicationContextInitializer  初始化时
+    SpringApplicationRunListener
 
+    只需要放在IOC容器中的两个监听器
+    ApplicationRunner
+    CommandLineRunner
+SpringBoot 注解说明
+    @Configuration
+    @ConditionalOnxxx 在指定环境下生效

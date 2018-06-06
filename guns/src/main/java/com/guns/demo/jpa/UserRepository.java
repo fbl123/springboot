@@ -14,7 +14,5 @@ public interface UserRepository extends JpaRepository<SysUser,Integer> {
 
 
 
-     @Override
-     Optional<SysUser> findById(Integer integer);
 
 }
