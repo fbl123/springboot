@@ -8,6 +8,7 @@ import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -18,7 +19,7 @@ import javax.servlet.*;
 import java.io.IOException;
 
 @Configuration
-public class WebConfig{
+public class WebConfig {
 
 
 //    @Bean
@@ -32,10 +33,15 @@ public class WebConfig{
 //        return webMvcConfigurerAdapter;
 //    }
 
-
+    @Bean
+    public FilterRegistrationBean filterRegistrationBean() {
+        FilterRegistrationBean filterRegistrationBean=new FilterRegistrationBean();
+        filterRegistrationBean.setFilter(new HiddenHttpMethodFilter());
+        filterRegistrationBean.addUrlPatterns("/*");
+        return  filterRegistrationBean;
+    }
 
     /**
-     *
      * @return
      */
     @Bean
@@ -50,11 +56,6 @@ public class WebConfig{
         };
         return webMvcConfigurer;
     }
-
-
-
-
-
 
 
 }

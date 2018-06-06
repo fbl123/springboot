@@ -7,9 +7,7 @@ import com.guns.demo.jpa.UserRepository;
 import com.guns.demo.mapper.SysUserMapper;
 import com.guns.demo.model.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * ajax
@@ -57,5 +55,22 @@ public class AjaxController {
         });
     }
 
+
+    @GetMapping("/test")
+    public String test(){
+        return "get";
+    }
+    @PostMapping("/test")
+    public String test2(){
+        return "post";
+    }
+    @DeleteMapping("/test")
+    public String test3(){
+        return "delete";
+    }
+    @PutMapping("/test")
+    public String test4(){
+        return "put";
+    }
 
 }

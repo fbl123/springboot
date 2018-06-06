@@ -126,3 +126,10 @@ springboot
 SpringBoot 注解说明
     @Configuration
     @ConditionalOnxxx 在指定环境下生效
+
+SpringMVC
+        HiddenHttpMethodFilter可以将POST请求转为PUT和DELETE请求
+        必须是POST请求
+        需要传来一个叫_method的参数 值是PUT时转为PUT请求 是DELETE时转为DELETE请求
+
+        @RequestHeader可以获取请求头的信息
