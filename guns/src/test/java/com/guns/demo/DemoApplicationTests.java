@@ -52,7 +52,6 @@ public class DemoApplicationTests {
     public void contextLoads() {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = new PageRequest(0, 2, sort);
-//        List<SysUser> userList = userRepository,findAll();
         Page<SysUser> page = userRepository.findAll(pageable);
         List<SysUser> userList = page.getContent();
         for (SysUser user : userList) {
@@ -61,9 +60,17 @@ public class DemoApplicationTests {
     }
 
     @Test
+    public void getAll() {
+        List<SysUser> userList = userRepository.findAll();
+        for (SysUser user : userList) {
+            System.out.println(user);
+        }
+    }
+
+    @Test
     public void save() {
         SysUser sysUser = userRepository.findById(2).get();
-        sysUser.setAccount("jick");
+        sysUser.setAccount("tom");
         sysUser.setPassword("000000");
         userRepository.save(sysUser);
     }

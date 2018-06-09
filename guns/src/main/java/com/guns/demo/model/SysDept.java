@@ -10,14 +10,16 @@ import javax.persistence.*;
  * @mbg.generated do_not_delete_during_merge
  */
 @Entity
+//数据库对应的表
 @Table(name = "sys_dept")
 public class SysDept {
     /** 主键id*/
     @Id
+    //配置主键生成策略 自动增长
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
-    /** 排序*/
+    //数据库对应的字段 如果属性名和数据库中的字段一致可以忽略
+    @Column(name = "num")
     private Integer num;
 
     /** 父部门id*/

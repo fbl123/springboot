@@ -127,6 +127,10 @@ SpringBoot 注解说明
     @Configuration
     @ConditionalOnxxx 在指定环境下生效
 
+
+    @PropertySource 加载制定配置文件
+    @ImportResource 导入Spring配置文件
+
 SpringMVC
         HiddenHttpMethodFilter可以将POST请求转为PUT和DELETE请求
         必须是POST请求
@@ -147,3 +151,18 @@ Redis
 
 ActiveMQ
    activemq是Apache组织的
+yaml语法
+
+    ""与''的区别 ''会将特殊字符转义 ""不会，按特殊字符表达的意思输出
+
+    Map
+    k: v
+    行内 {k1: v1,k2: v2}
+
+    数组的变现形式
+    - 值
+    行内表达为 【value1,value2,value3】
+配置文件中占位符
+ ${random.xx}产生一个随机值
+ ${配置的键} 值是这个键对应的值 如果没有配置键值 输出的是${配置的键}
+ ${键:默认值} 如果键没有配置值 使用默认值
