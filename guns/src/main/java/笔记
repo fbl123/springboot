@@ -130,6 +130,41 @@ SpringBoot 注解说明
 
     @PropertySource 加载制定配置文件
     @ImportResource 导入Spring配置文件
+yaml语法
+
+    ""与''的区别 ''会将特殊字符转义 ""不会，按特殊字符表达的意思输出
+
+    Map
+    k: v
+    行内 {k1: v1,k2: v2}
+
+    数组的变现形式
+    - 值
+    行内表达为 【value1,value2,value3】
+配置文件的加载位置 file:./config/
+                file:/
+                classpath:/config
+                classpath:/
+                优先级从高到低 如果有相同属性的配置 取优先级高的
+  使用spring.config.location 可以指定配置文件的位置(命令行参数的形式) 同样会形成互补配置
+配置文件中占位符
+ ${random.xx}产生一个随机值
+ ${配置的键} 值是这个键对应的值 如果没有配置键值 输出的是${配置的键}
+ ${键:默认值} 如果键没有配置值 使用默认值
+
+
+Profile
+    不同环境下使用不同的配置如
+  application-dev.properties
+  application-test.properties
+ 默认使用application.properties
+在配置文件中使用
+spring.profiles.active=  来说明使用那个配置（只是'-'与'.'之间的值 如dev）
+ ymal
+ 多配置
+文档块
+---
+profile: 环境名称
 
 SpringMVC
         HiddenHttpMethodFilter可以将POST请求转为PUT和DELETE请求
@@ -151,18 +186,3 @@ Redis
 
 ActiveMQ
    activemq是Apache组织的
-yaml语法
-
-    ""与''的区别 ''会将特殊字符转义 ""不会，按特殊字符表达的意思输出
-
-    Map
-    k: v
-    行内 {k1: v1,k2: v2}
-
-    数组的变现形式
-    - 值
-    行内表达为 【value1,value2,value3】
-配置文件中占位符
- ${random.xx}产生一个随机值
- ${配置的键} 值是这个键对应的值 如果没有配置键值 输出的是${配置的键}
- ${键:默认值} 如果键没有配置值 使用默认值
