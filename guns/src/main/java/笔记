@@ -20,6 +20,12 @@ Spring Boot 注测Servlet三大组件
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-thymeleaf</artifactId>
           </dependency>
+         配置
+         spring.thumeleaf.cache 一般配置成false  默认是true
+
+
+
+
         默认prefix=/templates
         suffix=.html
     使用jsp
@@ -33,6 +39,12 @@ Spring Boot 注测Servlet三大组件
         默认位置在src/main/webapp
             spring.mvc.view.prefix:/WEB-INF/jsp/
             spring.mvc.view.suffix:.jsp
+定制错误页面
+
+    如果有模版引擎的话 默认在静态资源文件夹下寻找
+       创建一个error文件夹  创建  错误状态吗.html 如：500.html 这时发生500错误 回来到该页面
+
+        或 4xx.html 5xx.html
 配置服务器端口等信息
     在配置文件中用server.**来配置
 
@@ -124,12 +136,26 @@ springboot
     ApplicationRunner
     CommandLineRunner
 SpringBoot 注解说明
-    @Configuration
-    @ConditionalOnxxx 在指定环境下生效
+    @Configuration  声明时一个配置类
+    @ConditionalOnxxx 在指定环境下生效 底层时使用@Conditional注解实现的
 
-
+    @EnableConfigurationProperties 将使用@ConfigurationProperties的类生效
     @PropertySource 加载制定配置文件
     @ImportResource 导入Spring配置文件
+
+   自动配置原理
+
+           xxxAutoConfiguration 自动配置的东西
+
+webjars 静态资源映射
+        /webjars/** 默认寻找路径 classpath:/META-INF/resources/webjars/
+        静态资源存放路径
+        classpath:/META-INF/resources/,
+        classpath:/resources/,
+        classpath:/static/,
+        classpath:/public/
+
+      可以通过 spring.resource.static.location 来指定静态静态资源的存放路径
 yaml语法
 
     ""与''的区别 ''会将特殊字符转义 ""不会，按特殊字符表达的意思输出

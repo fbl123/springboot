@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @ConfigurationProperties(prefix = "user")
-@Component
+//@Component
 public class User {
     //    @Value("${user.name}")
     private String name;

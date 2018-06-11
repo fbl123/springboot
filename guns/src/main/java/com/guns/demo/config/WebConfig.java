@@ -33,17 +33,17 @@ public class WebConfig {
 //        return webMvcConfigurerAdapter;
 //    }
 
-    /**
-     * 将POST请求转为PUT，DELETE请求
-     * @return
-     */
-    @Bean
-    public FilterRegistrationBean filterRegistrationBean() {
-        FilterRegistrationBean filterRegistrationBean=new FilterRegistrationBean();
-        filterRegistrationBean.setFilter(new HiddenHttpMethodFilter());
-        filterRegistrationBean.addUrlPatterns("/*");
-        return  filterRegistrationBean;
-    }
+//    /**
+//     * 将POST请求转为PUT，DELETE请求
+//     * @return
+//     */
+//    @Bean
+//    public FilterRegistrationBean filterRegistrationBean() {
+//        FilterRegistrationBean filterRegistrationBean=new FilterRegistrationBean();
+//        filterRegistrationBean.setFilter(new HiddenHttpMethodFilter());
+//        filterRegistrationBean.addUrlPatterns("/*");
+//        return  filterRegistrationBean;
+//    }
 
     /**
      * @return
