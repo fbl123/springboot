@@ -69,7 +69,7 @@ Mybatis
               mapper.xml包
               mybatis.mapper-locations=mapper/*.xml
               别名包
-              mybatis.type-aliases-package=com.guns.demo.model
+              mybatis.type-aliases-package=com.huijie.demo.model
               配置文件的位子（也可以全在spring中配置）
               mybatis.config-location=classpath:mybatis-config.xml
 
@@ -211,4 +211,4 @@ Redis
 
 
 ActiveMQ
-   activemq是Apache组织的
+

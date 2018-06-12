@@ -1,14 +1,14 @@
-package com.guns.demo;
+package com.huijie.demo;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.guns.demo.jpa.DeptRepository;
-import com.guns.demo.jpa.UserRepository;
-import com.guns.demo.mapper.SysUserMapper;
-import com.guns.demo.common.User;
-import com.guns.demo.model.SysDept;
-import com.guns.demo.model.SysUser;
-import com.guns.demo.mq.Producer;
+import com.huijie.demo.jpa.DeptRepository;
+import com.huijie.demo.jpa.UserRepository;
+import com.huijie.demo.mapper.SysUserMapper;
+import com.huijie.demo.common.User;
+import com.huijie.demo.model.SysDept;
+import com.huijie.demo.model.SysUser;
+import com.huijie.demo.mq.Producer;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +20,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.jms.core.MessageCreator;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.jms.*;
@@ -137,11 +136,22 @@ public class DemoApplicationTests {
     @Test
     public void mq() throws JMSException {
         int i = 10;
-        Destination destination = new ActiveMQQueue("mq");
+//        Destination destination = new ActiveMQQueue("mq");
         while (i > 0) {
             producer.send("消息" + i);
             i--;
         }
 
     }
+    @Test
+    public void maps(){
+
+        List<Map<String,Object>> maps=sysUserMapper.find();
+
+        System.out.println(maps);
+
+    }
+
+
+
 }
