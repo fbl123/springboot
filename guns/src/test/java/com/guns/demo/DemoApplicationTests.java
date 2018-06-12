@@ -1,15 +1,14 @@
-package com.huijie.demo;
+package com.guns.demo;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.huijie.demo.jpa.DeptRepository;
-import com.huijie.demo.jpa.UserRepository;
-import com.huijie.demo.mapper.SysUserMapper;
-import com.huijie.demo.common.User;
-import com.huijie.demo.model.SysDept;
-import com.huijie.demo.model.SysUser;
-import com.huijie.demo.mq.Producer;
-import org.apache.activemq.command.ActiveMQQueue;
+import com.guns.demo.jpa.DeptRepository;
+import com.guns.demo.jpa.UserRepository;
+import com.guns.demo.mapper.SysUserMapper;
+import com.guns.demo.common.User;
+import com.guns.demo.model.SysDept;
+import com.guns.demo.model.SysUser;
+import com.guns.demo.mq.Producer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
