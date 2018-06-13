@@ -2,7 +2,6 @@ package com.guns.demo;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.guns.demo.jpa.DeptRepository;
 import com.guns.demo.jpa.UserRepository;
 import com.guns.demo.mapper.SysUserMapper;
 import com.guns.demo.common.User;
@@ -40,8 +39,6 @@ public class DemoApplicationTests {
     private SysUserMapper sysUserMapper;
     @Autowired
     private RedisTemplate redisTemplate;
-    @Autowired
-    private DeptRepository deptRepository;
     @Value("#{'${names}'.split('-')}")
     private List<String> names;
 
@@ -105,13 +102,6 @@ public class DemoApplicationTests {
         }
     }
 
-    @Test
-    public void deptList() {
-        List<SysDept> deptList = deptRepository.findAll();
-        for (SysDept dept : deptList) {
-            System.out.println(dept);
-        }
-    }
 
     @Test
     public void names() {
@@ -135,22 +125,27 @@ public class DemoApplicationTests {
     @Test
     public void mq() throws JMSException {
         int i = 10;
-//        Destination destination = new ActiveMQQueue("mq");
+        //        Destination destination = new ActiveMQQueue("mq");
         while (i > 0) {
             producer.send("消息" + i);
             i--;
         }
 
     }
-    @Test
-    public void maps(){
 
-        List<Map<String,Object>> maps=sysUserMapper.find();
+    @Test
+    public void maps() {
+
+        List<Map<String, Object>> maps = sysUserMapper.find();
 
         System.out.println(maps);
 
     }
+    @Test
+    public void query() {
+        String name = userRepository.find(1);
+        System.out.println(name);
 
-
+    }
 
 }

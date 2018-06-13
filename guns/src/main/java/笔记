@@ -1,10 +1,12 @@
 扩展Spring MVC的配置
         使用WebMvcConfigurer这个bean
         WebMvcConfigurerAdapter(过时)
+        可以添加拦截器 与视图映射等
 使用@EnableWebMvc注解时说明不需要Spring Boot提供的Spring MVC配置一切配置由自己完成
 
 Spring Boot 注测Servlet三大组件
-               只要注入  ServletRegistrationBean
+                只需要注入
+                        ServletRegistrationBean
                         FilterRegistrationBean
                         ServletListenerRegistrationBean
                         ...即可
@@ -21,13 +23,8 @@ Spring Boot 注测Servlet三大组件
                 <artifactId>spring-boot-starter-thymeleaf</artifactId>
           </dependency>
          配置
-         spring.thumeleaf.cache 一般配置成false  默认是true
+         spring.thumeleaf.cache 一般配置成false  默认是true 关闭缓存
 
-
-
-
-        默认prefix=/templates
-        suffix=.html
     使用jsp
         默认不支持JSP
             首先要添加<dependency>
@@ -67,11 +64,12 @@ Mybatis
                         </dependency>
               配置
               mapper.xml包
-              mybatis.mapper-locations=mapper/*.xml
+              mybatis.mapper-locations
               别名包
-              mybatis.type-aliases-package=com.huijie.demo.model
+              mybatis.type-aliases-package
               配置文件的位子（也可以全在spring中配置）
               mybatis.config-location=classpath:mybatis-config.xml
+
 
 activemq
         添加依赖
@@ -204,13 +202,36 @@ SpringMVC
         自定义类型转换器
         创建一个实现Converter<S,T>接口的类 S 原类型（String）T 目标类型
         添加到ConversionServiceFactoryBean中 并将ConversionServiceFactoryBean注入到
-        <mvc:annotation conversion-service=""/>中
+        <mvc:annotation-driver conversion-service=""/>中
+
+        <mvc:annotation-driver/> 会注入RequestMappingHandlerMapper
+        RequestMappingHandleAdapter ExceptionHandlerExceptionResolver
+
+        @InitBinder 标示的方法可以对WebDateBinder对象进行初始化
+        方法不能有返回值
+        HttpMessageConverter负责将请求消息转换为一个对象 或将一个对象输出为响应信息
+            请求流程 请求转为HttpInputMessage 然后由HttpMessageConverter转为Spring MVC需要的对象
+            响应流程 HttpMessageConverter将JAVA对象转为HttpOutputMessage 转为响应报文
+        使用HttpMessageConverter
+        HttpEntity
+        ResponseEntity  作为返回值 可以实现文件下载
+
+        异常处理
+            使用@ExceptionHandler标注的方法可以对该Controller进行统一异常处理
+            ,入参的Exception就是抛出的异常，入参不能是Map,如果需要把异常信息返回页面，请使用ModelAndView
+
+           在@ControllerAdvice注解标注的类中使用@ExceptionHandler标注的方法  可以对所有Controller生效
+            发生异常的时候会先在本类中找@ExceptionHandler注解标注的方法如果没有 去@ControllerAdvice注解标注的类中找
+
 Redis
+
 
    集群
 
-  哨兵机制
+  哨兵机制(至少需要3台)
 
 
 ActiveMQ
+
+
 

@@ -2,7 +2,6 @@ package com.guns.demo.controller;
 
 import com.guns.demo.common.AjaxResult;
 import com.guns.demo.common.RestTemplate;
-import com.guns.demo.jpa.DeptRepository;
 import com.guns.demo.model.SysUser;
 import com.guns.demo.jpa.UserRepository;
 import org.dom4j.Document;
@@ -24,8 +23,7 @@ import java.util.Map;
 public class AjaxController {
     @Autowired
     UserRepository userRepository;
-    @Autowired
-    DeptRepository deptRepository;
+
 
     @GetMapping("/")
     public AjaxResult get() {
@@ -61,17 +59,6 @@ public class AjaxController {
         System.out.println(sysUser);
     }
 
-    /**
-     * 获取所有部门
-     *
-     * @return
-     */
-    @GetMapping
-    public AjaxResult depts() {
-        return RestTemplate.execute(() -> {
-            return deptRepository.findAll();
-        });
-    }
 
 
     @GetMapping("/test")

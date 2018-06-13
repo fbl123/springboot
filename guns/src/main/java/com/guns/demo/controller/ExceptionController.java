@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.io.IOException;
 
+/**
+ * 异常处理类
+ */
 @ControllerAdvice
 public class ExceptionController {
 

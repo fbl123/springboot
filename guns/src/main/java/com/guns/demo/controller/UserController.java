@@ -8,6 +8,9 @@ import com.guns.demo.jpa.UserRepository;
 import org.apache.commons.io.FileUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +18,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 
 @Controller
 @RequestMapping("/user")
@@ -33,6 +38,25 @@ public class UserController {
     @ResponseBody
     public String n() {
         return "你好";
+    }
+
+
+    /**
+     * 使用RespomseEnitty<T>实现文件下载功能
+     *
+     * @param
+     * @return
+     * @throws IOException
+     */
+    @GetMapping("/respEntity")
+    public ResponseEntity<byte[]> file(HttpSession session) throws IOException {
+        InputStream inputStream = new FileInputStream("/Users/zl/github/springboot/guns/src/main/java/笔记");
+        byte[] body = new byte[inputStream.available()];
+        inputStream.read(body);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=abc.txt");
+        ResponseEntity<byte[]> responseEntity = new ResponseEntity<byte[]>(body, headers, HttpStatus.OK);
+        return responseEntity;
     }
 
 

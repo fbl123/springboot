@@ -4,7 +4,6 @@ import com.guns.demo.common.Student;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-@Component
 public class StuConverter implements Converter<String,Student> {
     @Override
     public Student convert(String s) {
