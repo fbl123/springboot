@@ -21,6 +21,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.jms.*;
+import javax.sql.DataSource;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +44,8 @@ public class DemoApplicationTests {
     @Value("#{'${names}'.split('-')}")
     private List<String> names;
 
-
+    @Autowired
+    private DataSource dataSource;
     @Test
     public void contextLoads() {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
@@ -146,6 +149,10 @@ public class DemoApplicationTests {
         String name = userRepository.find(1);
         System.out.println(name);
 
+    }
+    @Test
+    public void dataSource() throws SQLException {
+        System.out.println(dataSource.getClass());
     }
 
 }

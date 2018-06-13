@@ -190,6 +190,11 @@ spring.profiles.active=  来说明使用那个配置（只是'-'与'.'之间的�
 ---
 profile: 环境名称
 
+
+自己写spring-boot-starter
+
+
+
 SpringMVC
         HiddenHttpMethodFilter可以将POST请求转为PUT和DELETE请求
         必须是POST请求
@@ -232,6 +237,9 @@ Redis
 
 
 ActiveMQ
+
+
+
 
 
 
