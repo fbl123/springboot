@@ -1,5 +1,8 @@
 package com.guns.demo.mq;
 
+import com.alibaba.druid.support.json.JSONUtils;
+import com.alibaba.fastjson.JSON;
+import com.guns.demo.model.SysUser;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
@@ -14,6 +17,7 @@ public class Consumer {
 //            throw new RuntimeException();
 //        }
         System.out.println(text);
+        System.out.println(JSON.parseObject(text,SysUser.class));
 
     }
 

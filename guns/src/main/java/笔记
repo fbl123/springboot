@@ -142,8 +142,9 @@ SpringBoot 注解说明
     @ImportResource 导入Spring配置文件
 
    自动配置原理
+            已经在xxxAutoConfiguration写好了默认配置
+            当需要修改配置是只需要在properties 修改对应的属性即可
 
-           xxxAutoConfiguration 自动配置的东西
 
 webjars 静态资源映射
         /webjars/** 默认寻找路径 classpath:/META-INF/resources/webjars/
@@ -191,7 +192,10 @@ spring.profiles.active=  来说明使用那个配置（只是'-'与'.'之间的�
 profile: 环境名称
 
 
-自己写spring-boot-starter
+
+自定义starter
+
+
 
 
 
@@ -237,6 +241,7 @@ Redis
 
 
 ActiveMQ
+
 
 
 

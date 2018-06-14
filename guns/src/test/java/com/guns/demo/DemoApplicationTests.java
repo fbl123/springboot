@@ -8,6 +8,7 @@ import com.guns.demo.common.User;
 import com.guns.demo.model.SysDept;
 import com.guns.demo.model.SysUser;
 import com.guns.demo.mq.Producer;
+import mystarter.service.MyService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,9 +44,18 @@ public class DemoApplicationTests {
     private RedisTemplate redisTemplate;
     @Value("#{'${names}'.split('-')}")
     private List<String> names;
+    @Autowired
+    private MyService myService;
 
     @Autowired
     private DataSource dataSource;
+    @Test
+    public void starter(){
+
+       myService.SayHello();
+    }
+
+
     @Test
     public void contextLoads() {
         Sort sort = new Sort(Sort.Direction.DESC, "id");

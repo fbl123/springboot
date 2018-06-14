@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@PropertySource(value = "classpath:sys.properties")
+@PropertySource(value = {"classpath:sys.properties"})
 @EnableConfigurationProperties(value = User.class)
-public class ReadProperties {
+public class LoadProperties {
 }
