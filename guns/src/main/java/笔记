@@ -133,6 +133,7 @@ springboot
     只需要放在IOC容器中的两个监听器
     ApplicationRunner
     CommandLineRunner
+
 SpringBoot 注解说明
     @Configuration  声明时一个配置类
     @ConditionalOnxxx 在指定环境下生效 底层时使用@Conditional注解实现的
@@ -144,7 +145,6 @@ SpringBoot 注解说明
    自动配置原理
             已经在xxxAutoConfiguration写好了默认配置
             当需要修改配置是只需要在properties 修改对应的属性即可
-
 
 webjars 静态资源映射
         /webjars/** 默认寻找路径 classpath:/META-INF/resources/webjars/
@@ -191,12 +191,15 @@ spring.profiles.active=  来说明使用那个配置（只是'-'与'.'之间的�
 ---
 profile: 环境名称
 
-
-
 自定义starter
+    编写一个读取properties配置的类
+    使用@ConfigurationProperties注解标示要获取的属性前缀
+    然后创建一个配置类使@ConfigurationProperties的类生效 并进行需要的配置
 
-
-
+    在resources/META-INF/spring.factories中
+    添加上自己写的配置类
+    org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    mystarter.service.MyServiceConfig（配资类）\代表换行
 
 
 SpringMVC
@@ -241,7 +244,20 @@ Redis
 
 
 ActiveMQ
+    使用步骤
+       创建连接工厂
+       获取连接
+       开启连接
+       获取Session
 
+       创建提供者，指定消息目的地，消息
+       发送消息
+
+       创建消费者，指定目的地，获取消息（最后签收消息）
+
+    持久化方案
+        JDBC
+        kahaDB
 
 
 

@@ -8,8 +8,6 @@ import javax.jms.*;
 public class Test {
     public static final String URL = "tcp://localhost:61616";
 
-
-
     public static final String DESTINATION = "mq";
 
 

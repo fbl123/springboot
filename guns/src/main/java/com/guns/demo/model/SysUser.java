@@ -19,7 +19,7 @@ import java.util.Date;
 public class SysUser implements Serializable{
     /** 主键id*/
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     /** 头像*/

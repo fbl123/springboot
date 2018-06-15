@@ -106,15 +106,6 @@ public class DemoApplicationTests {
         System.out.println(names);
     }
 
-    public static void main(String[] args) {
-        List list = new ArrayList();
-        Object o = list;
-        if (o instanceof List) {
-            System.out.println(o == null);
-
-        }
-    }
-
 
     @Test
     public void names() {
