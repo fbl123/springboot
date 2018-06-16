@@ -8,8 +8,11 @@ import org.apache.shiro.subject.PrincipalCollection;
 
 public class MyRealm extends AuthorizingRealm {
     @Override
-    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+    protected AuthorizationInfo doGetAuthorizationInfo(
+            PrincipalCollection principalCollection) {
         principalCollection.getPrimaryPrincipal();//获取当先用户
+
+
 
         return null;
     }
