@@ -7,14 +7,17 @@ public class Test {
 
     public static void main(String[] args) {
 
-        String username="admin";
-        String password="admin";
+        for (int h = 1; h <= 5; h++) {
 
-        Subject subject=SecurityUtils.getSubject();
-        UsernamePasswordToken token=new UsernamePasswordToken(username,password);
+            for (int i = 1; i <= h; i++){
+                System.out.print("*");
+            }
 
-        subject.login(token);
+            System.out.println();
 
+        }
 
     }
+
 }
+
