@@ -16,8 +16,18 @@ public class User {
     private Integer age;
     //    @Value("${user.address}")
     private String address;
+
+    private String password;
+
     private Map<String, String> map;
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Map<String, String> getMap() {
         return map;
@@ -58,6 +68,8 @@ public class User {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", address='" + address + '\'' +
+                ", password='" + password + '\'' +
+                ", map=" + map +
                 '}';
     }
 }

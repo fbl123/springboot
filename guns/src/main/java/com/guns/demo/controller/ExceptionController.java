@@ -14,11 +14,11 @@ public class ExceptionController {
 
 
 
-    @ExceptionHandler()
-    public String ex(Exception ex){
-       if(ex instanceof RuntimeException){
-            return "error";
-       }
-        return null;
-    }
+//    @ExceptionHandler()
+//    public String ex(Exception ex){
+//       if(ex instanceof RuntimeException){
+//            return "error";
+//       }
+//        return null;
+//    }
 }

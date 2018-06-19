@@ -1,56 +1,71 @@
-//package com.guns.demo.config;
-//
-//import com.guns.demo.common.MyRealm;
-//import org.apache.shiro.realm.Realm;
-//import org.apache.shiro.spring.LifecycleBeanPostProcessor;
-//import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
-//import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
-//import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-//import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//
-//import java.util.LinkedHashMap;
-//import java.util.Map;
-//
-//
-//@Configuration
-//public class ShiroConfig {
-//
-//
-//    @Bean
-//    public Realm myShiroRealm() {
-//        MyRealm realm = new MyRealm();
-//        return realm;
-//    }
-//    /**
-//     * 注册DelegatingFilterProxy（Shiro）
-//     * 集成Shiro有2种方法：
-//     * 1. 按这个方法自己组装一个FilterRegistrationBean（这种方法更为灵活，可以自己定义UrlPattern，
-//     * 在项目使用中你可能会因为一些很但疼的问题最后采用它， 想使用它你可能需要看官网或者已经很了解Shiro的处理原理了）
-//     * 2. 直接使用ShiroFilterFactoryBean（这种方法比较简单，其内部对ShiroFilter做了组装工作，无法自己定义UrlPattern，
-//     * 默认拦截 /*）
-//     *
-//     * @param
-//     * @return
-//     * @author SHANHY
-//     */
-////  @Bean
-////  public FilterRegistrationBean filterRegistrationBean() {
-////      FilterRegistrationBean filterRegistration = new FilterRegistrationBean();
-////      filterRegistration.setFilter(new DelegatingFilterProxy("shiroFilter"));
-////      //  该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理
-////      filterRegistration.addInitParameter("targetFilterLifecycle", "true");
-////      filterRegistration.setEnabled(true);
-////      filterRegistration.addUrlPatterns("/*");// 可以自己灵活的定义很多，避免一些根本不需要被Shiro处理的请求被包含进来
-////      return filterRegistration;
-////  }
-//
-//    @Bean(name = "lifecycleBeanPostProcessor")
-//    public LifecycleBeanPostProcessor getLifecycleBeanPostProcessor() {
-//        return new LifecycleBeanPostProcessor();
-//    }
-//
+package com.guns.demo.config;
+
+import com.guns.demo.common.MyRealm;
+import org.apache.shiro.realm.Realm;
+import org.apache.shiro.spring.LifecycleBeanPostProcessor;
+import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
+import org.springframework.web.filter.DelegatingFilterProxy;
+
+
+
+@Configuration
+@ImportResource("classpath:spring-shiro.xml")
+public class ShiroConfig {
+
+
+    @Bean
+    public Realm realm() {
+        MyRealm realm = new MyRealm();
+        return realm;
+    }
+
+    @Bean(name = "securityManager")
+    public DefaultWebSecurityManager getDefaultWebSecurityManager(Realm myRealm) {
+        DefaultWebSecurityManager dwsm = new DefaultWebSecurityManager();
+        dwsm.setRealm(myRealm);
+        return dwsm;
+    }
+
+    @Bean(name = "lifecycleBeanPostProcessor")
+    public LifecycleBeanPostProcessor getLifecycleBeanPostProcessor() {
+        return new LifecycleBeanPostProcessor();
+    }
+
+
+
+    /**
+     * 注册DelegatingFilterProxy（Shiro）
+     * 集成Shiro有2种方法：
+     * 1. 按这个方法自己组装一个FilterRegistrationBean（这种方法更为灵活，可以自己定义UrlPattern，
+     * 在项目使用中你可能会因为一些很但疼的问题最后采用它， 想使用它你可能需要看官网或者已经很了解Shiro的处理原理了）
+     * 2. 直接使用ShiroFilterFactoryBean（这种方法比较简单，其内部对ShiroFilter做了组装工作，无法自己定义UrlPattern，
+     * 默认拦截 /*）
+     *
+     * @param
+     * @return
+     * @author SHANHY
+     */
+  @Bean
+  public FilterRegistrationBean filterRegistrationBean() {
+      FilterRegistrationBean filterRegistration = new FilterRegistrationBean();
+      filterRegistration.setFilter(new DelegatingFilterProxy("shiroFilter"));
+      //  该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理
+      filterRegistration.addInitParameter("targetFilterLifecycle", "true");
+      filterRegistration.setEnabled(true);
+      filterRegistration.addUrlPatterns("/*");// 可以自己灵活的定义很多，避免一些根本不需要被Shiro处理的请求被包含进来
+      return filterRegistration;
+  }
+    @Bean
+    public ShiroFilterFactoryBean shiroFilter(DefaultWebSecurityManager securityManager){
+      ShiroFilterFactoryBean shiroFilterFactoryBean=new ShiroFilterFactoryBean();
+      shiroFilterFactoryBean.setSecurityManager(securityManager);
+      return shiroFilterFactoryBean;
+    }
 //    @Bean
 //    public DefaultAdvisorAutoProxyCreator getDefaultAdvisorAutoProxyCreator() {
 //        DefaultAdvisorAutoProxyCreator daap = new DefaultAdvisorAutoProxyCreator();
@@ -58,12 +73,7 @@
 //        return daap;
 //    }
 //
-//    @Bean(name = "securityManager")
-//    public DefaultWebSecurityManager getDefaultWebSecurityManager(Realm myRealm) {
-//        DefaultWebSecurityManager dwsm = new DefaultWebSecurityManager();
-//        dwsm.setRealm(myRealm);
-//        return dwsm;
-//    }
+//
 //
 //    @Bean
 //    public AuthorizationAttributeSourceAdvisor getAuthorizationAttributeSourceAdvisor(DefaultWebSecurityManager securityManager) {
@@ -71,8 +81,8 @@
 //        aasa.setSecurityManager(securityManager);
 //        return aasa;
 //    }
-//
-//
+
+
 //    /**
 //     * 加载shiroFilter权限控制规则（从数据库读取然后配置）
 //     */
@@ -90,7 +100,6 @@
 //        shiroFilterFactoryBean.setSuccessUrl("/"); //设置登录成功后的跳转页面
 //        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 //    }
-//
-//
-//
-//}
+
+
+}
