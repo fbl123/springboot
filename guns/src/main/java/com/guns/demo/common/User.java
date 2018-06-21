@@ -10,11 +10,8 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "user")
 //@Component
 public class User {
-    //    @Value("${user.name}")
     private String name;
-    //    @Value("${user.age}")
     private Integer age;
-    //    @Value("${user.address}")
     private String address;
 
     private String password;
