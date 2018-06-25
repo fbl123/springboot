@@ -12,7 +12,6 @@ public class Test {
 
 
     public static void main(String[] args) {
-//        String brokerUrl="tcp://localhost:61617";
         //创建连接工厂
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
                 ActiveMQConnectionFactory.DEFAULT_USER,

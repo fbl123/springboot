@@ -11,53 +11,14 @@
 //public class CallForm {
 //
 //
-//    private String phone;//通话人号码
+//    private String callNumber;//通话人号码
 //    private Long date; //通话时间  时间戳
 //    private Integer duration;  //通话时长 秒
-//    private Integer type;  //类型  1 打出 out  2 接听 in 3 未接
-//    private String name; //通话人备注
+//    private String status;  //类型  1 打出 out  2 接听 in 3 未接
+//    private String callName; //通话人备注
 //
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public String getPhone() {
-//        return phone;
-//    }
-//
-//    public void setPhone(String phone) {
-//        this.phone = phone;
-//    }
-//
-//    public Long getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(Long date) {
-//        this.date = date;
-//    }
-//
-//    public Integer getDuration() {
-//        return duration;
-//    }
-//
-//    public void setDuration(Integer duration) {
-//        this.duration = duration;
-//    }
-//
-//    public String getStatus() {
-//        return status;
-//    }
-//
-//    public void setStatus(String status) {
-//        this.status = status;
-//    }
-//
-//
+
+
 //    /**
 //     * 保存用户通话记录
 //     * @param
