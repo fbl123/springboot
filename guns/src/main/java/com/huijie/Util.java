@@ -4,7 +4,7 @@ public class Util {
 
 
     public static void main(String[] args) {
-        System.out.println(1<<2);
+        System.out.println(secToTime(1140));
     }
 
 
@@ -20,7 +20,7 @@ public class Util {
             minute = time / 60;
             if (minute < 60) {
                 second = time % 60;
-                timeStr = unitFormat(minute) + ":" + unitFormat(second);
+                timeStr = "00:"+unitFormat(minute) + ":" + unitFormat(second);
             } else {
                 hour = minute / 60;
                 if (hour > 99)
