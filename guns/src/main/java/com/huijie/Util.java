@@ -4,7 +4,8 @@ public class Util {
 
 
     public static void main(String[] args) {
-        System.out.println(secToTime(1140));
+        Integer id=-1;
+        System.out.println(secToTime(id));
     }
 
 

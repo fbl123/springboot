@@ -234,6 +234,8 @@ SpringMVC
 
            在@ControllerAdvice注解标注的类中使用@ExceptionHandler标注的方法  可以对所有Controller生效
             发生异常的时候会先在本类中找@ExceptionHandler注解标注的方法如果没有 去@ControllerAdvice注解标注的类中找
+异步任务
+
 
 Redis
 
