@@ -22,6 +22,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -104,6 +105,15 @@ public class UserController {
         return "redirect:/user/greeting";
     }
 
+
+    @ModelAttribute
+    public void user(@RequestParam(value = "id"/*,required = false*/) Integer id, Map<String, Object> map) {
+        SysUser sysUser = new SysUser();
+        sysUser.setId(id);
+        sysUser.setAccount("hh");
+        map.put("sysUser", sysUser);
+
+    }
     /**
      * 注册
      *

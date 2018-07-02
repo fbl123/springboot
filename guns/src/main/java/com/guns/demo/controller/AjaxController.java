@@ -4,14 +4,9 @@ import com.guns.demo.common.AjaxResult;
 import com.guns.demo.common.RestTemplate;
 import com.guns.demo.model.SysUser;
 import com.guns.demo.jpa.UserRepository;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.Map;
 
 /**
@@ -25,7 +20,7 @@ public class AjaxController {
     UserRepository userRepository;
 
 
-    @GetMapping("/")
+    @GetMapping("")
     public AjaxResult get() {
         return RestTemplate.execute(() -> {
             System.out.println("hh");
@@ -47,14 +42,7 @@ public class AjaxController {
 
     }
 
-    @ModelAttribute
-    public void user(@RequestParam("id") Integer id, Map<String, Object> map) {
-        SysUser sysUser = new SysUser();
-        sysUser.setId(id);
-        sysUser.setAccount("hh");
-        map.put("sysUser", sysUser);
 
-    }
 
 
     @GetMapping("/user")
