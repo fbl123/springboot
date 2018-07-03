@@ -107,13 +107,16 @@ public class UserController {
 
 
     @ModelAttribute
-    public void user(@RequestParam(value = "id"/*,required = false*/) Integer id, Map<String, Object> map) {
-        SysUser sysUser = new SysUser();
-        sysUser.setId(id);
-        sysUser.setAccount("hh");
-        map.put("sysUser", sysUser);
+    public void user(@RequestParam(value = "id", required = false) Integer id, Map<String, Object> map) {
+        if (id != null) {
+            SysUser sysUser = new SysUser();
+            sysUser.setId(id);
+            sysUser.setAccount("hh");
+            map.put("sysUser", sysUser);
+        }
 
     }
+
     /**
      * 注册
      *
