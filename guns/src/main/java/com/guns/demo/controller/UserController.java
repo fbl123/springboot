@@ -1,5 +1,6 @@
 package com.guns.demo.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.guns.demo.common.AjaxResult;
 import com.guns.demo.common.RestTemplate;
 import com.guns.demo.mapper.SysUserMapper;
@@ -26,7 +27,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserController{
 
     @Autowired
     SysUserMapper sysUserMapper;

@@ -77,7 +77,7 @@ public class DemoApplicationTests {
 
     @Test
     public void save() {
-        SysUser sysUser = userRepository.findById(2).get();
+        SysUser sysUser = new SysUser();
         sysUser.setAccount("tom");
         sysUser.setPassword("000000");
         userRepository.save(sysUser);
