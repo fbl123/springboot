@@ -22,6 +22,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.jms.*;
+import javax.management.ObjectName;
 import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -49,10 +50,11 @@ public class DemoApplicationTests {
 
     @Autowired
     private DataSource dataSource;
-    @Test
-    public void starter(){
 
-       myService.SayHello();
+    @Test
+    public void starter() {
+
+        myService.SayHello();
     }
 
 
@@ -78,8 +80,9 @@ public class DemoApplicationTests {
     @Test
     public void save() {
         SysUser sysUser = new SysUser();
+        sysUser.setId(2);
         sysUser.setAccount("tom");
-        sysUser.setPassword("000000");
+        sysUser.setPassword("111111");
         userRepository.save(sysUser);
     }
 
@@ -101,6 +104,18 @@ public class DemoApplicationTests {
     }
 
     @Test
+    public void map() {
+        Map<String, Object> map = sysUserMapper.get();
+        if(map!=null){
+
+            for(String key:map.keySet()){
+                System.out.println(key+"-->"+map.get(key));
+            }
+        }
+
+    }
+
+    @Test
     public void value() {
         System.out.println(user);
         System.out.println(names);
@@ -115,16 +130,7 @@ public class DemoApplicationTests {
         }
     }
 
-    @Test
-    public void map() {
 
-        Map<String, String> map = user.getMap();
-        for (String key : map.keySet()) {
-            System.out.println(key + "----->" + map.get(key));
-        }
-
-
-    }
 
     @Test
     public void mq() throws JMSException {
@@ -145,6 +151,7 @@ public class DemoApplicationTests {
         System.out.println(maps);
 
     }
+
     @Test
     public void query() {
         String name = userRepository.find(1);

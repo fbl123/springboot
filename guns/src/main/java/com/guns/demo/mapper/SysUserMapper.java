@@ -1,6 +1,7 @@
 package com.guns.demo.mapper;
 
 import com.guns.demo.model.SysUser;
+import io.swagger.models.auth.In;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -37,4 +38,7 @@ public interface SysUserMapper  {
 
     @Select("select name,account from sys_user")
     List<Map<String,Object>> find();
+
+    Map<String,Object> get();
+
 }

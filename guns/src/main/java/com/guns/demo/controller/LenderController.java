@@ -1,5 +1,7 @@
 package com.guns.demo.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.guns.demo.common.AjaxResult;
 import com.guns.demo.common.RestTemplate;
 import com.guns.demo.manager.LenderManager;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/lender")
@@ -45,16 +49,40 @@ public class LenderController {
     /**
      * 激活用户
      *
-     * @param id 用户ID
+     * @param id lender ID
      * @return
      */
-    @GetMapping("/active/{id:\\d++}")
-    public AjaxResult active(@PathVariable Long id) {
+    @GetMapping("/send/{id:\\d++}")
+    public AjaxResult sent(@PathVariable Long id) {
         return RestTemplate.execute(() -> {
-            //更新 状态即可
+            //发送激活邮件
+            //修改为待激活状态
 
             return true;
         });
+    }
+    @GetMapping("/active/{id:\\d++}")
+    public AjaxResult active(@PathVariable Long id) {
+        return RestTemplate.execute(() -> {
+            //修改为激活状态
+            return true;
+        });
+    }
+
+
+    public void users(Integer pageIndex,
+                      Integer pageSize,
+                      Long id,
+                      String name,
+                      String email,
+                      String mobile){
+        Map<String,Object> map=new HashMap<>();
+        map.put("id",id);
+        map.put("name",name);
+        map.put("email",email);
+        map.put("mobile",mobile);
+        PageHelper.startPage(pageIndex,pageSize);
+
     }
 
 

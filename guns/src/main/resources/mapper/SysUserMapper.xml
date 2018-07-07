@@ -241,5 +241,8 @@
         from sys_user
 
     </select>
+    <select id="get" resultType="map">
+          select * from sys_user where id=1
+    </select>
 
 </mapper>
