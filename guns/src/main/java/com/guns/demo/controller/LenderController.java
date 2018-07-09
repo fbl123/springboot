@@ -4,8 +4,6 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.guns.demo.common.AjaxResult;
 import com.guns.demo.common.RestTemplate;
-import com.guns.demo.manager.LenderManager;
-import com.guns.demo.model.Lender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,47 +18,47 @@ import java.util.Map;
 @RequestMapping("/api/lender")
 public class LenderController {
 
-    @Autowired
-    private LenderManager lenderManager;
-
-    public AjaxResult register(Lender lender) {
-        return RestTemplate.execute(() -> {
-            return lenderManager.register(lender);
-        });
-
-
-    }
-
-
-    /**
-     * 获取待审核的用户
-     *
-     * @return
-     */
-    public AjaxResult list() {
-        return RestTemplate.execute(() -> {
-            //返回 Lender中status=0 的即可
-            List<Lender> list = null;
-            return true;
-        });
-    }
-
-
-    /**
-     * 激活用户
-     *
-     * @param id lender ID
-     * @return
-     */
-    @GetMapping("/send/{id:\\d++}")
-    public AjaxResult sent(@PathVariable Long id) {
-        return RestTemplate.execute(() -> {
-            //发送激活邮件
-            //修改为待激活状态
-
-            return true;
-        });
-    }
+//    @Autowired
+//    private LenderManager lenderManager;
+//
+//    public AjaxResult register(Lender lender) {
+//        return RestTemplate.execute(() -> {
+//            return lenderManager.register(lender);
+//        });
+//
+//
+//    }
+//
+//
+//    /**
+//     * 获取待审核的用户
+//     *
+//     * @return
+//     */
+//    public AjaxResult list() {
+//        return RestTemplate.execute(() -> {
+//            //返回 Lender中status=0 的即可
+//            List<Lender> list = null;
+//            return true;
+//        });
+//    }
+//
+//
+//    /**
+//     * 激活用户
+//     *
+//     * @param id lender ID
+//     * @return
+//     */
+//    @GetMapping("/send/{id:\\d++}")
+//    public AjaxResult sent(@PathVariable Long id) {
+//        return RestTemplate.execute(() -> {
+//            //发送激活邮件
+//            //修改为待激活状态
+//
+//            return true;
+//        });
+//    }
     @GetMapping("/active/{id:\\d++}")
     public AjaxResult active(@PathVariable Long id) {
         return RestTemplate.execute(() -> {

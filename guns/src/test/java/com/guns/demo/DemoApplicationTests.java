@@ -2,6 +2,7 @@ package com.guns.demo;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.guns.demo.jpa.TestJpaDAO;
 import com.guns.demo.jpa.UserRepository;
 import com.guns.demo.mapper.SysUserMapper;
 import com.guns.demo.common.User;
@@ -26,6 +27,7 @@ import javax.management.ObjectName;
 import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -47,6 +49,8 @@ public class DemoApplicationTests {
     private List<String> names;
     @Autowired
     private MyService myService;
+    @Autowired
+    private TestJpaDAO testJpaDAO;
 
     @Autowired
     private DataSource dataSource;
@@ -66,6 +70,7 @@ public class DemoApplicationTests {
         List<SysUser> userList = page.getContent();
         for (SysUser user : userList) {
             System.out.println(user.getAccount());
+            System.out.println(user.getCreatetime());
         }
     }
 
@@ -163,4 +168,13 @@ public class DemoApplicationTests {
         System.out.println(dataSource.getClass());
     }
 
+    @Test
+    public void test(){
+
+        List<com.guns.demo.model.Test> all = testJpaDAO.findAll();
+        for(com.guns.demo.model.Test r:all){
+
+            System.out.println("Date---->"+r.getCreateTime());
+        }
+    }
 }
