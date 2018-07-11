@@ -260,25 +260,3 @@ ActiveMQ
     持久化方案
         JDBC
         kahaDB
-
-        Map<String, Object> userAttrMap = new HashMap<>();
-        Map<String, Object> userAttrMapView = userExtMapper.getMap(loanOrder.getId());
-
-        for (String key : userAttrMapView.keySet()) {
-            if ("id".equals(key) || "user_id".equals(key)) {
-
-            } else {
-                UserPersonalInfoDO user = new UserPersonalInfoDO();
-                user.setAttrName(key);
-                user.setAttrDisplayValue((String) userAttrMapView.get(key));
-                userAttrMap.put(key,user);
-            }
-
-        }
-        //根据用户的出生日期计算年龄`
-        String birthday=(String)userAttrMapView.get("birthday");
-        Integer age=DateUtil.getAge(new Date(Long.valueOf(birthday)));
-        map.put("age",age);
-        String ktpNo=(String)userAttrMapView.get("ktp_no");
-
-

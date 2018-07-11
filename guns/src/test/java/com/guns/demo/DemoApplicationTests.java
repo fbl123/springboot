@@ -85,8 +85,8 @@ public class DemoApplicationTests {
     @Test
     public void save() {
         SysUser sysUser = new SysUser();
-        sysUser.setId(2);
-        sysUser.setAccount("tom");
+        sysUser.setId(null);
+        sysUser.setAccount("text");
         sysUser.setPassword("111111");
         userRepository.save(sysUser);
     }
