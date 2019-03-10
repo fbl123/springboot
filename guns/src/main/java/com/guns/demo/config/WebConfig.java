@@ -9,13 +9,12 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Configuration
-@EnableSwagger2
+
 public class WebConfig {
 
 
@@ -45,35 +44,35 @@ public class WebConfig {
     /**
      * @return
      */
-    @Bean
-    public WebMvcConfigurer webMvcConfigurer() {
-        // 添加拦截器
-        WebMvcConfigurer webMvcConfigurer = new WebMvcConfigurer() {
-            @Override
-            public void addInterceptors(InterceptorRegistry registry) {
-
-                registry.addInterceptor(new MyInterceptor()).addPathPatterns("/user/**");
-            }
-        };
-        return webMvcConfigurer;
-    }
+//    @Bean
+//    public WebMvcConfigurer webMvcConfigurer() {
+//        // 添加拦截器
+//        WebMvcConfigurer webMvcConfigurer = new WebMvcConfigurer() {
+//            @Override
+//            public void addInterceptors(InterceptorRegistry registry) {
+//
+//                registry.addInterceptor(new MyInterceptor()).addPathPatterns("/user/**");
+//            }
+//        };
+//        return webMvcConfigurer;
+//    }
 
 
     /**
      * 添加自定义类型转换器
      * @return
      */
-    @Bean
-    public ConversionService conversionService(){
-        ConversionServiceFactoryBean conversionServiceFactoryBean=new ConversionServiceFactoryBean();
-
-        Set<Converter> set=new HashSet<>();
-        set.add(new StuConverter());
-        conversionServiceFactoryBean.setConverters(set);
-        conversionServiceFactoryBean.afterPropertiesSet();
-        return conversionServiceFactoryBean.getObject();
-
-    }
+//    @Bean
+//    public ConversionService conversionService(){
+//        ConversionServiceFactoryBean conversionServiceFactoryBean=new ConversionServiceFactoryBean();
+//
+//        Set<Converter> set=new HashSet<>();
+//        set.add(new StuConverter());
+//        conversionServiceFactoryBean.setConverters(set);
+//        conversionServiceFactoryBean.afterPropertiesSet();
+//        return conversionServiceFactoryBean.getObject();
+//
+//    }
 
 
 

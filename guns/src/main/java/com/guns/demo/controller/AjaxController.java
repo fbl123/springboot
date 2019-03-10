@@ -2,12 +2,10 @@ package com.guns.demo.controller;
 
 import com.guns.demo.common.AjaxResult;
 import com.guns.demo.common.RestTemplate;
-import com.guns.demo.model.SysUser;
-import com.guns.demo.jpa.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
+
 
 /**
  * ajax
@@ -16,8 +14,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api")
 public class AjaxController {
-    @Autowired
-    UserRepository userRepository;
 
 
     @GetMapping("")
@@ -28,27 +24,11 @@ public class AjaxController {
         });
     }
 
-    /**
-     * 获取所有用户
-     *
-     * @return
-     */
-    @GetMapping("/user/list")
-    public AjaxResult userlist() {
-
-        return RestTemplate.execute(() -> {
-            return userRepository.findAll();
-        });
-
-    }
 
 
 
 
-    @GetMapping("/user")
-    public void user(SysUser sysUser) {
-        System.out.println(sysUser);
-    }
+
 
 
     @GetMapping("/test")

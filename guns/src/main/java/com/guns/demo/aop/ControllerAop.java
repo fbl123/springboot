@@ -24,7 +24,8 @@ public class ControllerAop {
     public Object around(ProceedingJoinPoint point) {
         Object result = null;
         try {
-            logger.info("前置通知");
+            logger.info("调用方法:{}",point.getSignature()); ;
+            logger.info("目标参数为参数为{}",point.getArgs());
             result = point.proceed();
 
         } catch (Throwable throwable) {
