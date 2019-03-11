@@ -3,12 +3,13 @@ package com.guns.demo.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * Created by Administrator on 2019/3/10.
  */
 @Entity
-public class User {
+public class User implements Serializable{
     @Id
     @GeneratedValue
     private Long id;
@@ -29,5 +30,13 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

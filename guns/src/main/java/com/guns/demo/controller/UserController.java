@@ -8,6 +8,7 @@ import com.guns.demo.jpa.UserReposiory;
 import com.guns.demo.mapper.UserMapper;
 import com.guns.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,16 +37,26 @@ public class UserController {
     }
 
     @GetMapping
-    public AjaxResult list(@RequestParam(name="pageNum",defaultValue = "1") Integer pageNum,
-                           @RequestParam(name ="pageSize",defaultValue = "10")Integer pageSize){
+    public AjaxResult list(@RequestParam(name = "pageNum", defaultValue = "1") Integer pageNum,
+                           @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
 
-        return RestTemplate.execute(()->{
-            PageHelper.startPage(1,10);
-            List<User> userList=userMapper.get();
+        return RestTemplate.execute(() -> {
+            PageHelper.startPage(1, 10);
+            List<User> userList = userMapper.get();
 
             return AjaxResult.ok(new PageInfo<>(userList));
         });
 
+    }
+
+    @GetMapping("/{id}")
+    public AjaxResult user(@PathVariable("id") Long id) {
+
+        return RestTemplate.execute(() -> {
+
+
+            return userReposiory.findById(id);
+        });
     }
 
 
