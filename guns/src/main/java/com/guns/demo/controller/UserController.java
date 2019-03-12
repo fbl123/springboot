@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.guns.demo.common.AjaxResult;
 import com.guns.demo.common.RestTemplate;
 import com.guns.demo.jpa.UserReposiory;
+import com.guns.demo.manager.UserManager;
 import com.guns.demo.mapper.UserMapper;
 import com.guns.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +26,14 @@ public class UserController {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private UserManager userManager;
+
     @PostMapping
     public AjaxResult save(User user) {
         return RestTemplate.execute(() -> {
-            userReposiory.save(user);
-
-            return AjaxResult.ok("添加成功");
+            userManager.save(user);
+            return "success";
         });
 
 
@@ -41,10 +44,10 @@ public class UserController {
                            @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
 
         return RestTemplate.execute(() -> {
-            PageHelper.startPage(1, 10);
-            List<User> userList = userMapper.get();
 
-            return AjaxResult.ok(new PageInfo<>(userList));
+            PageInfo users=userManager.list(pageNum,pageSize);
+
+            return users;
         });
 
     }
@@ -54,8 +57,7 @@ public class UserController {
 
         return RestTemplate.execute(() -> {
 
-
-            return userReposiory.findById(id);
+            return userManager.findById(id);
         });
     }
 
