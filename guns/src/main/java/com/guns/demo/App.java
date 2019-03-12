@@ -11,9 +11,9 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
-//@EnableScheduling
+@EnableScheduling
 @MapperScan("com.guns.demo.mapper")
-public class App extends WebMvcConfigurerAdapter {
+public class App{
 
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
