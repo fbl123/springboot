@@ -47,4 +47,10 @@ public class UserManager {
 
         return userReposiory.findById(id);
     }
+
+    public void deleteById(Long id) {
+
+        userReposiory.deleteById(id);
+
+    }
 }

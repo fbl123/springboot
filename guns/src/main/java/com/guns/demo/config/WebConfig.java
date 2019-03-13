@@ -1,14 +1,10 @@
 package com.guns.demo.config;
 
-import com.guns.demo.Interceptor.MyInterceptor;
-import com.guns.demo.converter.StuConverter;
+
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ConversionServiceFactoryBean;
-import org.springframework.core.convert.ConversionService;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.filter.HiddenHttpMethodFilter;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -29,17 +25,17 @@ public class WebConfig {
 //        return webMvcConfigurerAdapter;
 //    }
 
-//    /**
-//     * 将POST请求转为PUT，DELETE请求
-//     * @return
-//     */
-//    @Bean
-//    public FilterRegistrationBean filterRegistrationBean() {
-//        FilterRegistrationBean filterRegistrationBean=new FilterRegistrationBean();
-//        filterRegistrationBean.setFilter(new HiddenHttpMethodFilter());
-//        filterRegistrationBean.addUrlPatterns("/*");
-//        return  filterRegistrationBean;
-//    }
+    /**
+     * 将POST请求转为PUT，DELETE请求
+     * @return
+     */
+    @Bean
+    public FilterRegistrationBean filterRegistrationBean() {
+        FilterRegistrationBean filterRegistrationBean=new FilterRegistrationBean();
+        filterRegistrationBean.setFilter(new HiddenHttpMethodFilter());
+        filterRegistrationBean.addUrlPatterns("/*");
+        return  filterRegistrationBean;
+    }
 
     /**
      * @return

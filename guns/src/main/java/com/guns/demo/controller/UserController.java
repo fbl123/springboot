@@ -61,5 +61,13 @@ public class UserController {
         });
     }
 
+    @DeleteMapping
+    public AjaxResult remove(@RequestParam("id") Long id){
+        return RestTemplate.execute(()->{
+            userManager.deleteById(id);
+            return "success";
+        });
+    }
+
 
 }
