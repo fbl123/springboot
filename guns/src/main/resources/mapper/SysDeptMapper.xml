@@ -15,8 +15,16 @@
 
 
 </sql>
+    <update id="update">
+        update USER SET name=#{name} where id=#{id}
 
-<select id="get" resultType="com.guns.demo.model.User">
+    </update>
+    <delete id="deleteById">
+        DELETE from user where id=#{id}
+
+    </delete>
+
+    <select id="get" resultType="com.guns.demo.model.User">
     SELECT
     <include refid="all"/>
     from user

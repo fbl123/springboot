@@ -50,7 +50,7 @@ public class UserManager {
 
     public void deleteById(Long id) {
 
-        userReposiory.deleteById(id);
-
+        userMapper.deleteById(id);
+//        userReposiory.deleteById(id);
     }
 }
