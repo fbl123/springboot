@@ -23,8 +23,6 @@ public class UserController {
 
     @Autowired
     private UserReposiory userReposiory;
-    @Autowired
-    private UserMapper userMapper;
 
     @Autowired
     private UserManager userManager;
@@ -45,7 +43,7 @@ public class UserController {
 
         return RestTemplate.execute(() -> {
 
-            PageInfo users=userManager.list(pageNum,pageSize);
+            PageInfo users = userManager.list(pageNum, pageSize);
 
             return users;
         });

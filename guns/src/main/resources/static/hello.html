@@ -48,7 +48,7 @@
     <div>
         <h1>vue.js</h1>
         <div id="app">
-            {{message}}
+            <p v-if="seen">{{message}}</p>
             <div>
 
             </div>
@@ -61,8 +61,9 @@
         </div>
 
 
-        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"
-                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        <script
+                src="http://code.jquery.com/jquery-3.3.1.js"
+                integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
                 crossorigin="anonymous"></script>
         <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"
                 integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -78,11 +79,17 @@
 
                 el: "#app",
                 data: {
-                    message: "hello"
+                    message: "hello",
+                    seen:true
                 },
                 methods: {
                     update: function () {
-                        this.message = $("#m").val();
+                        var a=this;
+                        $.get("/api",function (data) {
+                            a.message = data.status;
+                        })
+
+
                     }
                 }
 
