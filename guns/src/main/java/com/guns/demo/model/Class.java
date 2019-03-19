@@ -1,19 +1,19 @@
 package com.guns.demo.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
- * Created by Administrator on 2019/3/10.
+ * Created by Administrator on 2019/3/19.
  */
 @Entity
-public class User implements Serializable{
+public class Class {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-
+    @Column(name = "teacher_name",nullable = false)
+    private String teacherName="007";
 
     public Long getId() {
         return id;
@@ -31,11 +31,11 @@ public class User implements Serializable{
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
     }
 }
