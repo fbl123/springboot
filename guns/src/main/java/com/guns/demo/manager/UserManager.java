@@ -2,7 +2,8 @@ package com.guns.demo.manager;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.guns.demo.jpa.UserReposiory;
+
+import com.guns.demo.jpa.UserRepository;
 import com.guns.demo.mapper.UserMapper;
 import com.guns.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,10 @@ public class UserManager {
     private UserMapper userMapper;
 
     @Autowired
-    private UserReposiory userReposiory;
+    private UserRepository userRepository;
 
     public void save(User user) {
-        userReposiory.save(user);
+        userRepository.save(user);
     }
 
     public PageInfo list(Integer pageNum, Integer pageSize) {
@@ -40,17 +41,17 @@ public class UserManager {
               * 建议使用findById();
               */
 /*
-            User user=userReposiory.getOne(id);
+            User user=userRepository.getOne(id);
             user.getId();
             return user;
 */
 
-        return userReposiory.findById(id);
+        return userRepository.findById(id);
     }
 
     public void deleteById(Long id) {
 
         userMapper.deleteById(id);
-//        userReposiory.deleteById(id);
+//        userRepository.deleteById(id);
     }
 }

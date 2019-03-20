@@ -4,7 +4,6 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.guns.demo.common.AjaxResult;
 import com.guns.demo.common.RestTemplate;
-import com.guns.demo.jpa.UserReposiory;
 import com.guns.demo.manager.UserManager;
 import com.guns.demo.mapper.UserMapper;
 import com.guns.demo.model.User;
@@ -21,8 +20,7 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    private UserReposiory userReposiory;
+
 
     @Autowired
     private UserManager userManager;

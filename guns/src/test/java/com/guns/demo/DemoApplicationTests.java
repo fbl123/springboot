@@ -1,6 +1,8 @@
 package com.guns.demo;
 
-import com.guns.demo.jpa.StudentReposiory;
+import com.guns.demo.jpa.ClassRepository;
+import com.guns.demo.jpa.StudentRepository;
+import com.guns.demo.model.Class;
 import com.guns.demo.model.Student;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,16 +16,39 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class DemoApplicationTests {
 
     @Autowired
-    private StudentReposiory studentReposiory;
+    private StudentRepository studentRepository;
+    @Autowired
+    private ClassRepository classRepository;
 
 
     @Test
     public void save(){
 
         Student student=new Student();
-        studentReposiory.save(student);
-        System.out.println(studentReposiory.findAll());
+        student.setId(1L);
+        student.setName("123");
 
+        studentRepository.save(student);
+        System.out.println(studentRepository.findAll());
+
+
+    }
+
+    @Test
+    public void getStuByClassId(){
+
+    }
+
+    @Test
+    public void savacl(){
+        Class c=new Class();
+        classRepository.save(c);
+
+    }
+    @Test
+    public void classs(){
+
+        System.out.println(classRepository.findAll());;
 
     }
 }
