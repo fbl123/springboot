@@ -11,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DemoApplicationTests {
@@ -25,7 +27,7 @@ public class DemoApplicationTests {
     public void save(){
 
         Student student=new Student();
-        student.setId(1L);
+        student.setId(0L);
         student.setName("123");
 
         studentRepository.save(student);
@@ -36,6 +38,9 @@ public class DemoApplicationTests {
 
     @Test
     public void getStuByClassId(){
+        List<Student> studentList = studentRepository.findAllByClassId(1L);
+        System.out.println(studentList);
+
 
     }
 
