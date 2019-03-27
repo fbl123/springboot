@@ -24,6 +24,12 @@ public class Student {
     @Column(name = "age")
     private Long age=0L;
 
+    @Column(name = "address")
+    private String address="zh";
+
+    @Column(name = "number",columnDefinition = "varchar(255) default '0'")
+    private String number;
+
 
     public Long getId() {
         return id;
